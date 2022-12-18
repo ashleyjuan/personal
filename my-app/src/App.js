@@ -1,11 +1,13 @@
-import React from 'react';
-import { Breadcrumb, Layout, Menu, theme, Image, Row, Col } from 'antd';
+import React, { useState } from 'react';
+import Nav from 'react-bootstrap/Nav';
+import { Breadcrumb, Layout, Menu, theme, Image, Row, Col, Tabs } from 'antd';
 import { FacebookOutlined, PhoneOutlined, InstagramOutlined, MailOutlined } from '@ant-design/icons';
 const { Header, Content, Footer } = Layout;
 const App = () => {
-  const {
-    token: { colorBgContainer },
-  } = theme.useToken();
+  const [key, setKey] = useState('/');
+  const onSelect = (e) => {
+    setKey([e.key])
+  }
   return (
     <Layout>
       <Header
@@ -16,26 +18,64 @@ const App = () => {
           width: '100%',
         }}
       >
+        <Row gutter={16} style={{ justifyContent: 'end' }}>
+          <Col>
+            <a href='#/'>Home</a>
+          </Col>
+          <Col>
+            <a href='#/about'>About</a>
+          </Col>
+          <Col>
+            <a href='#/experience'>Experience</a>
+          </Col>
+          <Col>
+            <a href='#/contact'>Contact</a>
+          </Col>
+        </Row>
 
-        <Menu
+        {/* <Menu
+          onSelect={onSelect}
           theme="dark"
           mode="horizontal"
-          defaultSelectedKeys={['1']}
+          defaultSelectedKeys={key}
           items={[{
-            key: 1,
+            key: '/',
             label: `Home`,
           }, {
-            key: 2,
+            key: '/about',
             label: `About`,
+
           }, {
-            key: 3,
+            key: '/experience',
             label: `Experience`,
           }, {
-            key: 4,
+            key: '/contact',
             label: `Contact`,
           },]}
           style={{ justifyContent: 'end' }}
-        />
+        >
+        </Menu> */}
+        {/* <Tabs
+          defaultActiveKey="1"
+          // onChange={onChange}
+          items={[
+            {
+              label: `Tab 1`,
+              key: '1',
+              children: `Content of Tab Pane 1`,
+            },
+            {
+              label: `Tab 2`,
+              key: '2',
+              children: `Content of Tab Pane 2`,
+            },
+            {
+              label: `Tab 3`,
+              key: '3',
+              children: `Content of Tab Pane 3`,
+            },
+          ]}
+        /> */}
       </Header>
       <Content
         className="site-layout"
@@ -44,15 +84,20 @@ const App = () => {
           style={{
             // padding: 24,
             minHeight: 380,
-            background: colorBgContainer,
           }}
         >
-          <div style={{
-            backgroundImage: `url(/header.png)`,
-          }}>
-            {/* <Image preview={false} style={{ width: "100%" }} src='/header.jpg'></Image> */}
+          <div id='/' style={{ background: 'url(/header.jpg) repeat 0 0' }}>
+
           </div>
-          <div key={2}>11111 </div>
+          <div id="/about">
+            12421
+          </div>
+          <div id="/experience">
+            12421
+          </div>
+          <div id="/contact">
+            12421
+          </div>
         </div>
       </Content>
       <Footer
