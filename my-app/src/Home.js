@@ -201,7 +201,7 @@ const Home = () => {
                                         onChange={e => setSearch(e.target.value)} />
                                 </div>
                             </Col>
-                            <Col span={23}>
+                            <Col span={24}>
                                 <Tabs
                                     defaultActiveKey="1"
                                     onChange={key => setQuery(key)}
