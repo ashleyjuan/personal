@@ -1,135 +1,150 @@
-import React, { useState } from 'react';
-import Nav from 'react-bootstrap/Nav';
-import { Breadcrumb, Layout, Menu, theme, Image, Row, Col, Tabs } from 'antd';
-import { FacebookOutlined, PhoneOutlined, InstagramOutlined, MailOutlined } from '@ant-design/icons';
-const { Header, Content, Footer } = Layout;
+// import './App.css';
+// import 'intro.js/introjs.css';
+// import { Steps,Hints } from './intro.js-react';
+// import React, { useState } from 'react';
+
+// const App = () => {
+//     const [stepsEnabled, setStepsEnabled] = useState(true);
+//     const [steps, setSteps] = useState([
+//         {
+//             element: ".hello",
+//             intro: "Hello step"
+//         },
+//         {
+//             element: ".world",
+//             intro: "World step"
+//         }
+//     ])
+//     const [initialStep, setInitialStep] = useState(0);
+//     const [hintsEnabled, setHintsEnabled] = useState(true);
+//     const [hints, setHints] = useState([
+//         {
+//             element: ".hello",
+//             hint: "Hello hint",
+//             hintPosition: "middle-right"
+//         }
+//     ])
+//     const onExit = () => {
+//         setStepsEnabled(false);
+//     };
+//     const toggleSteps = () => {
+//         setStepsEnabled(!stepsEnabled);
+//     };
+//     const addStep = () => {
+//         const newStep = {
+//             element: ".alive",
+//             intro: "Alive step"
+//         };
+//         setSteps(preState => {
+//             return (
+//                 {
+//                     ...preState,
+//                     newStep
+//                 }
+//             )
+//         });
+//     };
+//     const toggleHints = () => {
+//         setHintsEnabled(!hintsEnabled);
+//     };
+//     const addHint = () => {
+//         const newHint = {
+//             element: ".alive",
+//             hint: "Alive hint",
+//             hintPosition: "middle-right"
+//         };
+
+//         setHints(preState => {
+//             return (
+//                 {
+//                     ...preState,
+//                     newHint
+//                 }
+//             )
+//         });
+//     };
+//     return (
+//         <div>
+//             <Steps
+//                 enabled={stepsEnabled}
+//                 steps={steps}
+//                 initialStep={initialStep}
+//                 onExit={onExit}
+//             />
+//             <Hints enabled={hintsEnabled} hints={hints} />
+
+//             <div className="controls">
+//                 <div>
+//                     <button onClick={toggleSteps}>Toggle Steps</button>
+//                     <button onClick={addStep}>Add Step</button>
+//                 </div>
+//                 <div>
+//                     <button onClick={toggleHints}>Toggle Hints</button>
+//                     <button onClick={addHint}>Add Hint</button>
+//                 </div>
+//             </div>
+
+//             <h1 className="hello">Hello,</h1>
+//             <hr />
+//             <h1 className="world">World!</h1>
+//             <hr />
+//             <h1 className="alive">It's alive!</h1>
+//         </div>
+//     );
+// }
+
+
+// export default App;
+
+import React, { useRef, useState } from 'react';
+import { Button, Divider, Space, Tour } from 'antd';
+import { EllipsisOutlined } from '@ant-design/icons';
 const App = () => {
-  const [key, setKey] = useState('/');
-  const onSelect = (e) => {
-    setKey([e.key])
-  }
-  return (
-    <Layout>
-      <Header
-        style={{
-          position: 'sticky',
-          top: 0,
-          zIndex: 1,
-          width: '100%',
-        }}
-      >
-        <Row gutter={16} style={{ justifyContent: 'end' }}>
-          <Col>
-            <a href='#/'>Home</a>
-          </Col>
-          <Col>
-            <a href='#/about'>About</a>
-          </Col>
-          <Col>
-            <a href='#/experience'>Experience</a>
-          </Col>
-          <Col>
-            <a href='#/contact'>Contact</a>
-          </Col>
-        </Row>
+    const ref1 = useRef(null);
+    const ref2 = useRef(null);
+    const ref3 = useRef(null);
+    const [open, setOpen] = useState(false);
+    const steps = [
+        {
+            title: 'Upload File',
+            description: 'Put your files here.',
+            cover: (
+                <img
+                    alt="tour.png"
+                    src="https://user-images.githubusercontent.com/5378891/197385811-55df8480-7ff4-44bd-9d43-a7dade598d70.png"
+                />
+            ),
+            target: () => ref1.current,
+        },
+        {
+            title: 'Save',
+            description: 'Save your changes.',
+            target: () => ref2.current,
+        },
+        {
+            title: 'Other Actions',
+            description: 'Click to see other actions.',
+            target: () => ref3.current,
+        },
+    ];
+    return (
+        <>
+            <Button type="primary" onClick={() => setOpen(true)}>
+                Begin Tour
+            </Button>
 
-        {/* <Menu
-          onSelect={onSelect}
-          theme="dark"
-          mode="horizontal"
-          defaultSelectedKeys={key}
-          items={[{
-            key: '/',
-            label: `Home`,
-          }, {
-            key: '/about',
-            label: `About`,
+            <Divider />
 
-          }, {
-            key: '/experience',
-            label: `Experience`,
-          }, {
-            key: '/contact',
-            label: `Contact`,
-          },]}
-          style={{ justifyContent: 'end' }}
-        >
-        </Menu> */}
-        {/* <Tabs
-          defaultActiveKey="1"
-          // onChange={onChange}
-          items={[
-            {
-              label: `Tab 1`,
-              key: '1',
-              children: `Content of Tab Pane 1`,
-            },
-            {
-              label: `Tab 2`,
-              key: '2',
-              children: `Content of Tab Pane 2`,
-            },
-            {
-              label: `Tab 3`,
-              key: '3',
-              children: `Content of Tab Pane 3`,
-            },
-          ]}
-        /> */}
-      </Header>
-      <Content
-        className="site-layout"
-      >
-        <div
-          style={{
-            // padding: 24,
-            minHeight: 380,
-          }}
-        >
-          <div id='/' style={{ background: 'url(/header.jpg) repeat 0 0' }}>
+            <Space>
+                <Button ref={ref1}> Upload</Button>
+                <Button ref={ref2} type="primary">
+                    Save
+                </Button>
+                <Button ref={ref3} icon={<EllipsisOutlined />} />
+            </Space>
 
-          </div>
-          <div id="/about">
-            12421
-          </div>
-          <div id="/experience">
-            12421
-          </div>
-          <div id="/contact">
-            12421
-          </div>
-        </div>
-      </Content>
-      <Footer
-      >
-        <Row>
-          <Col span={11} >
-            <Row style={{ padding: '5px' }}>
-              <Col center style={{ fontSize: '20px' }}>
-                <FacebookOutlined /> 阮奕瑄
-              </Col>
-            </Row>
-            <Row style={{ padding: '5px' }}>
-              <Col center style={{ fontSize: '20px' }}>
-                <PhoneOutlined />   0932-337-284
-              </Col>
-            </Row>
-            <Row style={{ padding: '5px' }}>
-              <Col center style={{ fontSize: '20px' }}>
-                <InstagramOutlined />  ashley910521
-              </Col>
-            </Row>
-            <Row style={{ padding: '5px' }}>
-              <Col center style={{ fontSize: '20px' }}>
-                <MailOutlined />  ashley910521@gmail.com
-              </Col>
-            </Row>
-          </Col>
-          <hr></hr>
-          <Col span={11}>col-12</Col>
-        </Row>
-      </Footer>
-    </Layout >
-  );
+            <Tour open={open} onClose={() => setOpen(false)} steps={steps} />
+        </>
+    );
 };
 export default App;
