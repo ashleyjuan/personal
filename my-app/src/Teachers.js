@@ -38,7 +38,7 @@ const Teachers = () => {
     }
     useEffect(() => {
         axios
-            .get('./teachers.json', {})
+            .get('./data/teachers.json', {})
             .then((response) => {
                 //一組資料是用來顯示的，一組資料是用來filter，當預設的姿料
                 setData(response.data);

@@ -19,12 +19,12 @@ const FinalProject = () => {
     ];
     useEffect(() => {
         axios
-            .get('./110.json', {})
+            .get('./data/110.json', {})
             .then((response) => {
                 setData1(response.data);
             })
         axios
-            .get('./109.json', {})
+            .get('./data/109.json', {})
             .then((response) => {
                 setData2(response.data);
             })

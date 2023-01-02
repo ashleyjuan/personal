@@ -111,7 +111,7 @@ const Home = () => {
     useEffect(() => {
         openNotification();
         axios
-            .get('./News.json', {})
+            .get('./data/News.json', {})
             .then((response) => {
                 //一組資料是用來顯示的，一組資料是用來filter，當預設的姿料
                 setData(response.data);
