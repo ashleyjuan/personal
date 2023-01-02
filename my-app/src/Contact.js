@@ -12,12 +12,6 @@ const Contact = () => {
         {
             title: '聯絡我們',
             description: '如果需要聯絡我們可以點擊信箱！',
-            // cover: (
-            //     <img
-            //         alt="tour.png"
-            //         src="https://user-images.githubusercontent.com/5378891/197385811-55df8480-7ff4-44bd-9d43-a7dade598d70.png"
-            //     />
-            // ),
             target: () => ref1.current,
         },
         {
@@ -26,9 +20,6 @@ const Contact = () => {
             target: () => ref2.current,
         },
     ];
-    // useEffect(() => {
-    //     setOpen(true)
-    // }, [])
     return (
         <>
             <Col span={24}>

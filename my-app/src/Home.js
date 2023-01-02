@@ -95,21 +95,6 @@ const Home = () => {
             title: '',
             key: 'type',
             dataIndex: 'type',
-            // render: (_, { tags }) => (
-            //     <>
-            //         {tags.map((tag) => {
-            //             let color = tag.length > 5 ? 'geekblue' : 'green';
-            //             if (tag === 'loser') {
-            //                 color = 'volcano';
-            //             }
-            //             return (
-            //                 <Tag color={color} key={tag}>
-            //                     {tag.toUpperCase()}
-            //                 </Tag>
-            //             );
-            //         })}
-            //     </>
-            // ),
         },
         {
             title: '',
@@ -126,7 +111,7 @@ const Home = () => {
     useEffect(() => {
         openNotification();
         axios
-            .get('/News.json', {})
+            .get('./News.json', {})
             .then((response) => {
                 //一組資料是用來顯示的，一組資料是用來filter，當預設的姿料
                 setData(response.data);

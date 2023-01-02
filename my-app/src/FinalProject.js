@@ -14,23 +14,17 @@ const FinalProject = () => {
         {
             title: '點擊可查看更多專題內容喔～',
             description: '',
-            // cover: (
-            //     <img
-            //         alt="tour.png"
-            //         src="https://user-images.githubusercontent.com/5378891/197385811-55df8480-7ff4-44bd-9d43-a7dade598d70.png"
-            //     />
-            // ),
             target: () => ref1.current,
         },
     ];
     useEffect(() => {
         axios
-            .get('/110.json', {})
+            .get('./110.json', {})
             .then((response) => {
                 setData1(response.data);
             })
         axios
-            .get('/109.json', {})
+            .get('./109.json', {})
             .then((response) => {
                 setData2(response.data);
             })

@@ -37,7 +37,7 @@ const Forms = () => {
     useEffect(() => {
         //從Form.json拿取資料
         axios
-            .get('/Form.json', {})
+            .get('./Form.json', {})
             .then((response) => {
                 //一組資料是用來顯示的，一組資料是用來filter，當預設的姿料
                 setData(response.data);
